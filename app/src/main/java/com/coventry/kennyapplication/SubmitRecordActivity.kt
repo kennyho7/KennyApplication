@@ -31,8 +31,11 @@ class SubmitRecordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Enable debug-level logging for Firebase Database
-        FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG)
+        viewBinding = ActivitySubmitRecordBinding.inflate(layoutInflater)
+        setContentView(viewBinding.root)
+
+        // Initialize the cameraExecutor property
+        cameraExecutor = Executors.newSingleThreadExecutor()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -107,9 +110,6 @@ class SubmitRecordActivity : AppCompatActivity() {
                     .show()
             }
         }
-
-        viewBinding = ActivitySubmitRecordBinding.inflate(layoutInflater)
-        setContentView(viewBinding.root)
 
         // Request camera permissions
         if (allPermissionsGranted()) {
