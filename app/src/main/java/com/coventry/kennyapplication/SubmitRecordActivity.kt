@@ -30,6 +30,7 @@ import com.google.firebase.ktx.Firebase
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
+
 class SubmitRecordActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivitySubmitRecordBinding
@@ -260,6 +261,22 @@ class SubmitRecordActivity : AppCompatActivity() {
                     sensorStatusTV.setTextColor(Color.GREEN)
                 }
             }
+        }
+    }
+
+    fun checkProximitySensorAvailability() {
+        if (proximitySensor == null) {
+            // No proximity sensor available
+            val toast = Toast.makeText(this, "No proximity sensor found in device..", Toast.LENGTH_SHORT)
+            toast.show()
+            finish()
+        } else {
+            // Proximity sensor is available
+            sensorManager.registerListener(
+                proximitySensorEventListener,
+                proximitySensor,
+                SensorManager.SENSOR_DELAY_NORMAL
+            )
         }
     }
 }

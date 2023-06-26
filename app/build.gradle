@@ -34,6 +34,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+
 }
 
 dependencies {
@@ -61,7 +62,7 @@ dependencies {
     // Glide supports fetching, decoding, and displaying video stills, images, and animated GIFs
     implementation 'com.github.bumptech.glide:glide:4.15.1'
 
-    // Kenny dependencies
+    // Camera dependencies
     def camerax_version = "1.2.2"
     implementation "androidx.camera:camera-core:${camerax_version}"
     implementation "androidx.camera:camera-camera2:${camerax_version}"
@@ -70,4 +71,7 @@ dependencies {
 
     implementation "androidx.camera:camera-view:${camerax_version}"
     implementation "androidx.camera:camera-extensions:${camerax_version}"
+
+    //test
+    testImplementation 'org.mockito:mockito-core:3.12.4'
 }
